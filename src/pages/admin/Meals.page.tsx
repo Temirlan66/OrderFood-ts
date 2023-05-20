@@ -1,7 +1,7 @@
 import { Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material'
 import { Button, Grid, IconButton } from '@mui/material'
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 import MealModal, { FormSchema } from '../../admin/pages/meals/MealModal'
 import { Column, Meal } from '../../common/constants/types'
@@ -11,9 +11,9 @@ import {
     getAllMeals,
     updateMeals,
 } from '../../store/meals/meals.thunk'
-import { RootState } from '../../store/store'
+import { AppDispatch, RootState } from '../../store/store'
 const Meals = () => {
-    const dispatch = useAppDispatch()
+    const dispatch = useDispatch<AppDispatch>()
     const [params, setParams] = useSearchParams()
     // const [isModalOpen, setModalOpen] = useState(false)
     const meals = useSelector((state: RootState) => state.meals.items)
